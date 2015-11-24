@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS copy text to clipboard</title>
+</head>
+
+<body>
+    <p>
+        <textarea class="js-copytextarea" readonly="readonly">Hello I'm some text</textarea>
+    </p>
+
+    <p>
+        <button class="js-textareacopybtn">Copy Textarea</button>
+    </p>
+    <script type="text/javascript">
+    //手机上不能黏贴
+        //参考链接http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+        var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+        copyTextareaBtn.addEventListener('click', function(event) {
+            var copyTextarea = document.querySelector('.js-copytextarea');
+            copyTextarea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copying text command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+        });
+    </script>
+    <hr>
+    <!--  复制按钮里的文本-->
+    <button onclick="copyToClipboard(this.textContent)">Copy me!</button>
+    <script>
+    //参考链接https://github.com/lgarron/clipboard.js
+    // A simple function to copy a string to clipboard. See https://github.com/lgarron/clipboard.js for a full solution.
+    var copyToClipboard = (function() {
+      var _intercept = false;
+      var _dataString = null;
+      document.addEventListener("copy", function(e){
+        if (_intercept) {
+          _intercept = false;
+          e.clipboardData.setData("text/plain", _dataString);
+          e.preventDefault();
+        }
+      });
+      return function(data) {
+        _intercept = true;
+        _dataString = data;
+        document.execCommand("copy");
+      };
+    })();
+    </script>
+    </script>
+</body>
+
+</html>

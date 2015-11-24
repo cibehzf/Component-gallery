@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>声明式触发选项卡（触发切换效果）</title>
+    <link rel="stylesheet" href="bootstrap-3.3.5/css/bootstrap.css">
+    <style type="text/css">
+        body {
+            color: #333;
+            background: #f2f2f2;
+        }
+        
+        a {
+            color: #333;
+        }
+        
+        .orderNav {
+            margin-bottom: 10px;
+            background: #fff;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .orderNav .col5 {
+            width: 20%;
+            height: 28px;
+        }
+        
+        .orderNav .col5 .tabName {
+            height: 100%;
+            display: inherit;
+            padding: 0px;
+            background: none;
+            color: #333;
+        }
+        
+        .orderNav .active .tabName{
+            border-bottom: 2px solid #09f;
+        }
+    </style>
+</head>
+    
+<body>
+  <!--加nav和不加的区别-->
+    <!-- 选项卡组件（菜单项nav-tabs）-->
+<!--    移动要用ul li ,active类不会转移到所点击的li上-->
+    <ul id="myTab" class="row nav orderNav text-center" role="tablist">
+                <li class="col-xs-2 col5 active"><a href="#tab1" class="tabName" data-toggle="tab">全部</a></li>
+                <li class="col-xs-2 col5"><a href="#tab2" class="tabName" data-toggle="tab">待付款</a></li>
+                <li class="col-xs-2 col5"><a href="#tab3" class="tabName" data-toggle="tab">待发货</a></li>
+                <li class="col-xs-2 col5"><a href="#tab4" class="tabName" data-toggle="tab">待收货</a></li>
+                <li class="col-xs-2 col5"><a href="#tab5" class="tabName" data-toggle="tab">待评价</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    全部
+                </div>
+                <div class="tab-pane" id="tab2">
+                    待付款
+                </div>
+                <div class="tab-pane" id="tab3">
+                    待发货
+                </div>
+                <div class="tab-pane" id="tab4">
+                    待收货
+                </div>
+                <div class="tab-pane" id="tab5">
+                    待评价
+                </div>
+            </div>
+    <script src="js-frame/jquery-1.9.1.js"></script>
+    <script src="bootstrap-3.3.5/js/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS3 label-arrow bootstrap</title>
+  <link rel="stylesheet" href="bootstrap-3.3.5/css/bootstrap.css">
+  <style type="text/css">
+    body {
+      padding: 50px 50px;
+    }
+
+    .label-right {
+      position: absolute;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+      line-height: 16px;
+      height: 20px;
+    }
+
+    .label-right:after {
+      left: 100%;
+      top: 40%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-left-color: #5bc0de;
+      border-left-width: 5px;
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      margin-top: -8px;
+    }
+
+    .label-left {
+      position: absolute;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px;
+      line-height: 16px;
+      height: 20px;
+    }
+
+    .label-left:before {
+      right: 100%;
+      top: 40%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-right-color: #5bc0de;
+      border-right-width: 5px;
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="division">
+    <span class="label label-info label-right">Label Right</span>
+    <br>
+    <br>
+    <span class="label label-info label-left">Label Left</span>
+
+  </div>
+
+</body>
+
+</html>
