@@ -8,7 +8,6 @@
         /* CSS样式制作 */
      
         ul {
-            list-style-type: none;
             margin: 0px;
             padding: 0px;
         }
@@ -22,24 +21,34 @@
             height: 190px;
             margin: 20px auto;
         }
-        
+
         #ul1 {
             border-bottom: 1px solid #ccc;
+            font-size: 0px;/*让子元素li没有间距*/
         }
         
         #ul1 li {
-            display: inline-block;
+            display: inline-block;/*让li横向*/
             text-align: center;
-            border: 1px solid #999;
+            font-size: 1rem;
+        }
+        #ul1 li a{
+            border: 1px solid #ccc;
             border-bottom: none;
+            background: #fff;
+            border-right: none;
+        }
+        #ul1 li:last-child a{
+            border-right: 1px solid #ccc;
         }
         
        
-        #ul1 li.active {
+        #ul1 li.active a{
+            padding-bottom: 1px;/*让选中的tab没有底部边框*/
         }
         
         #tab-list div {
-            border: 1px solid #7396B8;
+            border: 1px solid #ccc;
             border-top: none;
         }
         
@@ -62,12 +71,17 @@
 </head>
 
 <body>
-    <!-- HTML页面布局 -->
     <div id="tab-list">
         <ul id="ul1">
-            <li class="active">房产</li>
-            <li>家居</li>
-            <li>二手房</li>
+            <li class="active">
+                <a href="#tabcontent3">tab1</a>
+            </li>
+            <li>
+                <a href="#tabcontent2">tab2</a>
+            </li>
+            <li>
+                <a href="#tabcontent3">tab3</a>
+            </li>
         </ul>
         <div>
             tabcontet1 tabcontet1 tabcontet1 tabcontet1
