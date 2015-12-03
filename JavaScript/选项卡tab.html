@@ -6,16 +6,16 @@
     <title>选项卡tab</title>
     <style type="text/css">
         /* CSS样式制作 */
-     
+
         ul {
             margin: 0px;
             padding: 0px;
         }
-        
+
         a {
             text-decoration: none;
         }
-        
+
         #tab-list {
             width: 275px;
             height: 190px;
@@ -26,7 +26,7 @@
             border-bottom: 1px solid #ccc;
             font-size: 0px;/*让子元素li没有间距*/
         }
-        
+
         #ul1 li {
             display: inline-block;/*让li横向*/
             text-align: center;
@@ -41,32 +41,32 @@
         #ul1 li:last-child a{
             border-right: 1px solid #ccc;
         }
-        
-       
+
+
         #ul1 li.active a{
             padding-bottom: 1px;/*让选中的tab没有底部边框*/
         }
-        
+
         #tab-list div {
             border: 1px solid #ccc;
             border-top: none;
         }
-        
+
         #tab-list div li {
             height: 30px;
             line-height: 30px;
             text-indent: 8px;
         }
-        
+
         .show {
             display: block;
         }
-        
+
         .hide {
             display: none;
         }
     </style>
-    
+
 
 </head>
 
@@ -99,6 +99,9 @@
             var aLi = oUl1.getElementsByTagName("li");
             var oDiv = document.getElementById("tab-list");
             var aDiv = oDiv.getElementsByTagName("div");
+            //如果第一个li被click的话, 那就让第一个div显示
+            //如果第二个li被click的话, 那就让第二个div显示
+            //如果第三个li被click的话, 那就让第三个div显示
             for (var i = 0; i < aLi.length; i++) {
                 aLi[i].index = i;
                 aLi[i].onclick = function () {
