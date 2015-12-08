@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .input-group {
+            display: table;
+            border-collapse: separate;
+        }
+
+        .input-group .form-control {
+            display: table-cell;
+            border-right: none;
+        }
+
+        .input-group .form-control:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .input-group .btn {
+            display: table-cell;
+            border-right: none;
+        }
+        .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+        .input-group .btn:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-right: 1px solid #ccc;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        .colorpicker-element i {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+
+        .colorpicker-element .btn {
+            position: relative;
+        }
+
+        .colorpicker {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: block;
+            width: 105px;
+            text-align: left;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .colorpicker .arrow {
+            top: -22px;
+            left: 70%;
+            /* margin-left: -31px; */
+            border-color: transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.25);
+            border-bottom-width: 0;
+            border-width: 11px;
+            position: absolute;
+            display: block;
+            border-style: solid;
+        }
+
+        .colorpicker .arrow:after {
+            bottom: -11px;
+            margin-left: -10px;
+            border-color: transparent;
+            border-bottom-color: #fff;
+            border-top-width: 0;
+            content: "";
+            border-width: 10px;
+            position: absolute;
+            display: block;
+            border-style: solid;
+        }
+
+        .colorpicker .content {
+            width: 85px;
+            padding: 5px;
+        }
+
+        .colorpicker .content .pcolor {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-group borderCol colorpicker-element">
+        <input type="text" value="#000000" class="form-control closepopover">
+        <span class="btn">
+            <i style="background-color: rgb(0, 0, 0);"></i>
+            <div class="colorpicker hide">
+                <div class="arrow"></div>
+                <div class="content">
+                    <span class="pcolor" style="background: orange;"></span>
+                    <span class="pcolor" style="background: #36f;"></span>
+                    <span class="pcolor" style="background: yellow;"></span>
+                </div>
+            </div>
+        </span>
+    </div>
+</body>
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(".colorpicker-element .btn").on("click", function () {
+        $(".colorpicker-element .colorpicker").addClass("hide");
+        $(this).find(".colorpicker").removeClass("hide");
+    });
+    $(".colorpicker .pcolor").on("click", function (e) {
+        e.stopPropagation();
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+        $(".colorpicker-element .colorpicker").addClass("hide");
+        var selcolor = $(this).css("background-color");
+        $(this).parents(".colorpicker-element").find("input").val(selcolor);
+        $(this).parents(".btn").find("i").css("background",selcolor);
+    });
+    $(".closepopover").on("click", function(e){
+        e.stopPropagation();
+        if($(".colorpicker").hasClass("hide")){
+            $(".colorpicker").addClass("hide");
+        }
+    });
+</script>
+</html>
