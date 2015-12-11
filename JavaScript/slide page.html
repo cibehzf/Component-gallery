@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title></title>
+</head>
+<style type="text/css">
+    * {
+        box-sizing: border-box;
+    }
+
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .Tcolor .content {
+        position: relative;
+        width: 35px;
+        height: 195px;
+        overflow: hidden;
+        margin: 5px 0px;
+    }
+
+    .Tcolor .content .contentlist {
+        position: absolute;
+        top: 0px;
+    }
+
+    .Tcolor .prev,
+    .Tcolor .next {
+        margin-left: 5px;
+        padding: 2px 3px;
+    }
+
+    .Tcolor li {
+        display: block;
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+
+    .Tcolor li.active {
+        border: 2px solid #09f;
+    }
+
+    .color {
+        border: 1px solid #ccc;
+        display: inline-block;
+        height: 35px;
+        width: 35px;
+        margin-right: 5px;
+    }
+
+    .color.active {
+        border: 2px solid #09f;
+    }
+</style>
+
+<body>
+    <div class="Tcolor">
+        <div class="prev btn"><i class="icon iconfont" style="font-size: 16px;">上</i></div>
+        <div class="content">
+            <div class="contentlist">
+                <ul id="colorType">
+                    <li class="color active btn" style="background-color:rgb(204,204,204);" title="灰色" color-id="48"></li>
+                    <li class="color btn" style="background-color:rgb(255,255,0);" title="黄色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(253,164,40);" title="橙色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(255,51,102);" title="桃红色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(51,102,255);" title="蓝色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(114,237,255);" title="蓝绿色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(0,0,0);" title="黑色" color-id="47"></li>
+                    <li class="color btn" style="background-color:rgb(255,255,255);" title="白色" color-id="47"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="next btn"><i class="icon iconfont" style="font-size: 16px;">下</i></div>
+    </div>
+    <script src="JSlib/zepto.js"></script>
+    <script src="JSlib/fx.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var page = 1;
+            var i = 5;
+            $(".Tcolor .next").on("click", function() {
+                var $parent = $(this).parents(".Tcolor");
+                var $cl = $parent.find(".contentlist");
+                var clHeight = $parent.find(".content").height();
+                var cllen = $parent.find(".color").length;
+                var pageCount = Math.ceil(cllen / i);
+                var $cltop = parseInt($cl.css("top"));
+                $cltop -= clHeight;
+                if (page == pageCount) {
+                    $cl.animate({
+                        "top": "0px"
+                    }, 300);
+                    page = 1;
+                } else {
+                    $cl.animate({
+                        "top": $cltop + "px"
+                    }, 300);
+                    page++;
+                }
+            });
+            $(".Tcolor .prev").on("click", function() {
+                var $parent = $(this).parents(".Tcolor");
+                var $cl = $parent.find(".contentlist");
+                var clHeight = $parent.find(".content").height();
+                var cllen = $parent.find(".color").length;
+                var pageCount = Math.ceil(cllen / i);
+                var $cltop = parseInt($cl.css("top"));
+                $cltop += clHeight;
+                if (page == 1) {
+                    $cl.animate({
+                        "top": "-" + (pageCount - 1) * clHeight + "px"
+                    }, 300);
+                    page = pageCount;
+                } else {
+                    console.log($cltop);
+                    $cl.animate({
+                        "top": $cltop + "px"
+                    }, 300);
+                    page--;
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
